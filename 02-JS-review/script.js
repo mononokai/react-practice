@@ -143,7 +143,6 @@ function getBook(id) {
     return data.find((d) => d.id === id);
 }
 
-
 // // Destructuring
 
 // const book = getBook(1);
@@ -160,7 +159,6 @@ function getBook(id) {
 // primaryGenre;
 // secondaryGenre;
 // translations;
-
 
 // // Rest/Spread Operator
 
@@ -179,18 +177,16 @@ function getBook(id) {
 // const updateBook = {
 //     ...book,
 //     // adding a new property
-//     movePublicationDate: '2001-12-19', 
+//     movePublicationDate: '2001-12-19',
 //     //  overwriting an existing property
 //     pages: 1210};
 // updateBook;
-
 
 // // Template Literals
 
 // // template literals allow you to create strings that hold JS expressions
 // const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
 // summary;
-
 
 // // Ternaries instead of if/else statements
 
@@ -200,7 +196,6 @@ function getBook(id) {
 // pagesRange;
 // // because hasMovieAdaptation is a boolean, it is easy to use for a ternary
 // console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
-
 
 // // Arrow Functions
 
@@ -214,12 +209,11 @@ function getBook(id) {
 // // not used.
 // const getYearAgain = str => str.split('-')[0];
 
-
 // // Short-Circuiting and Logical Operators
 
 // // The && and // operators have the ability to short circuit. Short-circuiting
 // // is when, depending on the condition, the operator returns the first value
-// // and will not look at the second value. 
+// // and will not look at the second value.
 // // Below, because the first value is "false", it short-circuits and does not look
 // // at the string behind it.
 // console.log(true && "Some string");
@@ -243,13 +237,12 @@ function getBook(id) {
 // const count = book.reviews.librarything.reviewsCount ?? "no data";
 // count;
 
-
 // // Optional Chaining
 
 function getTotalReviewCount(book) {
     const goodreads = book.reviews.goodreads?.reviewsCount ?? 0;
     // The ? added below makes the libby.reviewsCount optional. When the property
-    // is undefined/null, it will not try to pull a value. We can then use 
+    // is undefined/null, it will not try to pull a value. We can then use
     // nullish coalescing to default the value.
     const libby = book.reviews.libby?.reviewsCount ?? 0;
     const librarything = book.reviews?.librarything ?? 0;
@@ -259,7 +252,6 @@ function getTotalReviewCount(book) {
 // // but only helps
 // console.log(getTotalReviewCount(book));
 
-
 // Array Map Method
 
 // The .map() method takes in an array and a function that will be iterated
@@ -268,12 +260,23 @@ function getTotalReviewCount(book) {
 const books = getBooks();
 books;
 
-const titles = books.map(book => book.title);
+const titles = books.map((book) => book.title);
 titles;
 
-const essentialData = books.map(book => ({
+const essentialData = books.map((book) => ({
     title: book.title,
     author: book.author,
-    reviewsCounts: getTotalReviewCount(book)
+    reviewsCounts: getTotalReviewCount(book),
 }));
 essentialData;
+
+// Array Filter Method
+
+// the .filter() method takes in an array and a condition to filter out the
+// values that return false. it then creates a new filtered array.
+const longBooks = books
+    .filter((book) => book.pages > 500)
+    // chaining multiple filters
+    .filter((book) => book.hasMovieAdaptation);
+longBooks;
+
