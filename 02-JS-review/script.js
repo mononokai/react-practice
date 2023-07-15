@@ -254,7 +254,7 @@ function getTotalReviewCount(book) {
 
 // Array Map Method
 
-// The .map() method takes in an array and a function that will be iterated
+// The .map() method takes in a function that will iterate
 // through the values of the array and create a new array with the returned
 // values.
 const books = getBooks();
@@ -272,11 +272,23 @@ essentialData;
 
 // Array Filter Method
 
-// the .filter() method takes in an array and a condition to filter out the
+// the .filter() method takes in a condition to filter out the array
 // values that return false. it then creates a new filtered array.
 const longBooks = books
     .filter((book) => book.pages > 500)
     // chaining multiple filters
     .filter((book) => book.hasMovieAdaptation);
 longBooks;
+
+
+// Array Reduce Method
+
+// the reduce method is the most versatile and powerful of the JS array methods
+// it takes in a callback function and a starting value. it then iterates through
+// the array, calling the function on each value.
+// below, we have a starting value of 0 and we are passing an argument "acc"
+// that will hold the accumulating value as it adds the total pages
+const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
+pagesAllBooks;
+// the reduce method's starting value could be something like an object or array
 
