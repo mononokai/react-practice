@@ -144,116 +144,136 @@ function getBook(id) {
 }
 
 
-// Destructuring
+// // Destructuring
 
-const book = getBook(1);
+// const book = getBook(1);
 
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
-title;
-author;
-pages;
-publicationDate;
-genres;
-hasMovieAdaptation;
+// const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
+// title;
+// author;
+// pages;
+// publicationDate;
+// genres;
+// hasMovieAdaptation;
 
-const [primaryGenre, secondaryGenre] = genres;
-primaryGenre;
-secondaryGenre;
-translations;
-
-
-// Rest/Spread Operator
-
-// the rest operator will create an array with the "rest" of the values in the
-// array or object
-const [firstGenre, secondGenre, ...otherGenres] = genres;
-console.log(firstGenre, secondGenre, otherGenres);
-
-// the spread operator will take all of the values of the array and place them in
-// a new array
-const newGenres = [...genres, "epic fantasy"];
-console.log(newGenres);
-
-// the spread operator works similarly with an object, but can be used to
-// create new properties, but also to override existing property values
-const updateBook = {
-    ...book,
-    // adding a new property
-    movePublicationDate: '2001-12-19', 
-    //  overwriting an existing property
-    pages: 1210};
-updateBook;
+// const [primaryGenre, secondaryGenre] = genres;
+// primaryGenre;
+// secondaryGenre;
+// translations;
 
 
-// Template Literals
+// // Rest/Spread Operator
 
-// template literals allow you to create strings that hold JS expressions
-const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
-summary;
+// // the rest operator will create an array with the "rest" of the values in the
+// // array or object
+// const [firstGenre, secondGenre, ...otherGenres] = genres;
+// console.log(firstGenre, secondGenre, otherGenres);
 
+// // the spread operator will take all of the values of the array and place them in
+// // a new array
+// const newGenres = [...genres, "epic fantasy"];
+// console.log(newGenres);
 
-// Ternaries instead of if/else statements
-
-// ternaries are operators that use three parts to decide a condition
-// syntax: condition ? true return value : false return value
-const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
-pagesRange;
-// because hasMovieAdaptation is a boolean, it is easy to use for a ternary
-console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
-
-
-// Arrow Functions
-
-// arrow functions are useful for writing shorthand functions
-function getYear(str) {
-    return str.split('-')[0];
-}
-console.log(getYear(publicationDate));
-
-// when writing an arrow function on a single line, the return keyword is
-// not used.
-const getYearAgain = str => str.split('-')[0];
+// // the spread operator works similarly with an object, but can be used to
+// // create new properties, but also to override existing property values
+// const updateBook = {
+//     ...book,
+//     // adding a new property
+//     movePublicationDate: '2001-12-19', 
+//     //  overwriting an existing property
+//     pages: 1210};
+// updateBook;
 
 
-// Short-Circuiting and Logical Operators
+// // Template Literals
 
-// The && and // operators have the ability to short circuit. Short-circuiting
-// is when, depending on the condition, the operator returns the first value
-// and will not look at the second value. 
-// Below, because the first value is "false", it short-circuits and does not look
-// at the string behind it.
-console.log(true && "Some string");
-console.log(false && "Some string");
-
-// The && operator short-circuits when the first value is false and immediately
-// returns the first value
-console.log(translations.polish && "This book has a Polish translation");
-
-// This also works with truthy and falsy values
-// Falsy values include false, 0, -0, NaN, '', null, and undefined
-// Because of this, be careful when using short-circuiting. It can backfire due
-// to these falsy values if you are not aware of them.
-
-// The || operator short-circuits when the first value is true and immediately
-// returns the first value
-console.log(hasMovieAdaptation || "This book does not have a movie");
-
-// The nullish coalescing operator is ?? and can return the right-side value
-// when the left side is falsy. If the reviewsCount were 0, it would return "no data"
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// // template literals allow you to create strings that hold JS expressions
+// const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
+// summary;
 
 
-// Optional Chaining
+// // Ternaries instead of if/else statements
+
+// // ternaries are operators that use three parts to decide a condition
+// // syntax: condition ? true return value : false return value
+// const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
+// pagesRange;
+// // because hasMovieAdaptation is a boolean, it is easy to use for a ternary
+// console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
+
+
+// // Arrow Functions
+
+// // arrow functions are useful for writing shorthand functions
+// function getYear(str) {
+//     return str.split('-')[0];
+// }
+// console.log(getYear(publicationDate));
+
+// // when writing an arrow function on a single line, the return keyword is
+// // not used.
+// const getYearAgain = str => str.split('-')[0];
+
+
+// // Short-Circuiting and Logical Operators
+
+// // The && and // operators have the ability to short circuit. Short-circuiting
+// // is when, depending on the condition, the operator returns the first value
+// // and will not look at the second value. 
+// // Below, because the first value is "false", it short-circuits and does not look
+// // at the string behind it.
+// console.log(true && "Some string");
+// console.log(false && "Some string");
+
+// // The && operator short-circuits when the first value is false and immediately
+// // returns the first value
+// console.log(translations.polish && "This book has a Polish translation");
+
+// // This also works with truthy and falsy values
+// // Falsy values include false, 0, -0, NaN, '', null, and undefined
+// // Because of this, be careful when using short-circuiting. It can backfire due
+// // to these falsy values if you are not aware of them.
+
+// // The || operator short-circuits when the first value is true and immediately
+// // returns the first value
+// console.log(hasMovieAdaptation || "This book does not have a movie");
+
+// // The nullish coalescing operator is ?? and can return the right-side value
+// // when the left side is falsy. If the reviewsCount were 0, it would return "no data"
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
+
+
+// // Optional Chaining
 
 function getTotalReviewCount(book) {
-    const goodreads = book.reviews.goodreads.reviewsCount;
+    const goodreads = book.reviews.goodreads?.reviewsCount ?? 0;
     // The ? added below makes the libby.reviewsCount optional. When the property
     // is undefined/null, it will not try to pull a value. We can then use 
     // nullish coalescing to default the value.
-    const librarything = book.reviews.libby?.reviewsCount ?? 0;
+    const libby = book.reviews.libby?.reviewsCount ?? 0;
+    const librarything = book.reviews?.librarything ?? 0;
     return goodreads + librarything;
 }
-// It's not a bad idea to use optional chaining liberally, as it cannot hurt you
-// but only helps
-console.log(getTotalReviewCount(book));
+// // It's not a bad idea to use optional chaining liberally, as it cannot hurt you
+// // but only helps
+// console.log(getTotalReviewCount(book));
+
+
+// Array Map Method
+
+// The .map() method takes in an array and a function that will be iterated
+// through the values of the array and create a new array with the returned
+// values.
+const books = getBooks();
+books;
+
+const titles = books.map(book => book.title);
+titles;
+
+const essentialData = books.map(book => ({
+    title: book.title,
+    author: book.author,
+    reviewsCounts: getTotalReviewCount(book)
+}));
+essentialData;
