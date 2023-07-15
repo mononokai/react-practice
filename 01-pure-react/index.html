@@ -15,9 +15,19 @@
 
     <script>
         function App() {
-            return React.createElement('header');
-            
+            const [time, setTime] = React.useState(new Date().toLocaleString());
+
+            React.useEffect(function() {
+                setInterval(() => {
+                    setTime(new Date().toLocaleString());
+                }, 1000);
+            }, [])
+
+            return React.createElement('header', null, `Hello React! It's ${time}`);
         }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(App));
     </script>
 </body>
 
