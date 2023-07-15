@@ -243,3 +243,17 @@ console.log(hasMovieAdaptation || "This book does not have a movie");
 const count = book.reviews.librarything.reviewsCount ?? "no data";
 count;
 
+
+// Optional Chaining
+
+function getTotalReviewCount(book) {
+    const goodreads = book.reviews.goodreads.reviewsCount;
+    // The ? added below makes the libby.reviewsCount optional. When the property
+    // is undefined/null, it will not try to pull a value. We can then use 
+    // nullish coalescing to default the value.
+    const librarything = book.reviews.libby?.reviewsCount ?? 0;
+    return goodreads + librarything;
+}
+// It's not a bad idea to use optional chaining liberally, as it cannot hurt you
+// but only helps
+console.log(getTotalReviewCount(book));
