@@ -183,3 +183,20 @@ const updateBook = {
     pages: 1210};
 updateBook;
 
+
+// Template Literals
+
+// template literals allow you to create strings that hold JS expressions
+const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
+summary;
+
+
+// Ternaries instead of if/else statements
+
+// ternaries are operators that use three parts to decide a condition
+// syntax: condition ? true return value : false return value
+const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
+pagesRange;
+// because hasMovieAdaptation is a boolean, it is easy to use for a ternary
+console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
+
