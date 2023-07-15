@@ -200,3 +200,16 @@ pagesRange;
 // because hasMovieAdaptation is a boolean, it is easy to use for a ternary
 console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
 
+
+// Arrow Functions
+
+// arrow functions are useful for writing shorthand functions
+function getYear(str) {
+    return str.split('-')[0];
+}
+console.log(getYear(publicationDate));
+
+// when writing an arrow function on a single line, the return keyword is
+// not used.
+const getYearAgain = str => str.split('-')[0];
+
