@@ -143,9 +143,10 @@ function getBook(id) {
     return data.find((d) => d.id === id);
 }
 
+
 // Destructuring
 
-const book = getBook(2);
+const book = getBook(1);
 
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book;
 title;
@@ -158,3 +159,27 @@ hasMovieAdaptation;
 const [primaryGenre, secondaryGenre] = genres;
 primaryGenre;
 secondaryGenre;
+
+
+// Rest/Spread Operator
+
+// the rest operator will create an array with the "rest" of the values in the
+// array or object
+const [firstGenre, secondGenre, ...otherGenres] = genres;
+console.log(firstGenre, secondGenre, otherGenres);
+
+// the spread operator will take all of the values of the array and place them in
+// a new array
+const newGenres = [...genres, "epic fantasy"];
+console.log(newGenres);
+
+// the spread operator works similarly with an object, but can be used to
+// create new properties, but also to override existing property values
+const updateBook = {
+    ...book,
+    // adding a new property
+    movePublicationDate: '2001-12-19', 
+    //  overwriting an existing property
+    pages: 1210};
+updateBook;
+
