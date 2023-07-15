@@ -148,7 +148,7 @@ function getBook(id) {
 
 const book = getBook(1);
 
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation } = book;
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
 title;
 author;
 pages;
@@ -159,6 +159,7 @@ hasMovieAdaptation;
 const [primaryGenre, secondaryGenre] = genres;
 primaryGenre;
 secondaryGenre;
+translations;
 
 
 // Rest/Spread Operator
@@ -212,4 +213,33 @@ console.log(getYear(publicationDate));
 // when writing an arrow function on a single line, the return keyword is
 // not used.
 const getYearAgain = str => str.split('-')[0];
+
+
+// Short-Circuiting and Logical Operators
+
+// The && and // operators have the ability to short circuit. Short-circuiting
+// is when, depending on the condition, the operator returns the first value
+// and will not look at the second value. 
+// Below, because the first value is "false", it short-circuits and does not look
+// at the string behind it.
+console.log(true && "Some string");
+console.log(false && "Some string");
+
+// The && operator short-circuits when the first value is false and immediately
+// returns the first value
+console.log(translations.polish && "This book has a Polish translation");
+
+// This also works with truthy and falsy values
+// Falsy values include false, 0, -0, NaN, '', null, and undefined
+// Because of this, be careful when using short-circuiting. It can backfire due
+// to these falsy values if you are not aware of them.
+
+// The || operator short-circuits when the first value is true and immediately
+// returns the first value
+console.log(hasMovieAdaptation || "This book does not have a movie");
+
+// The nullish coalescing operator is ?? and can return the right-side value
+// when the left side is falsy. If the reviewsCount were 0, it would return "no data"
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
 
