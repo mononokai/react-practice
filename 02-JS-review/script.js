@@ -1,4 +1,4 @@
-// Using the Quokka extension in VS Code will make the code on this page 
+// Using the Quokka extension in VS Code will make the code on this page
 // easier to figure out
 
 const data = [
@@ -150,7 +150,15 @@ function getBook(id) {
 
 const book = getBook(1);
 
-const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
+const {
+    title,
+    author,
+    pages,
+    publicationDate,
+    genres,
+    hasMovieAdaptation,
+    translations,
+} = book;
 title;
 author;
 pages;
@@ -172,7 +180,7 @@ console.log(firstGenre, secondGenre, otherGenres);
 
 // the spread operator will take all of the values of the array and place them in
 // a new array
-const newGenres = [...genres, "epic fantasy"];
+const newGenres = [...genres, 'epic fantasy'];
 console.log(newGenres);
 
 // the spread operator works similarly with an object, but can be used to
@@ -182,13 +190,16 @@ const updateBook = {
     // adding a new property
     movePublicationDate: '2001-12-19',
     //  overwriting an existing property
-    pages: 1210};
+    pages: 1210,
+};
 updateBook;
 
 // Template Literals
 
 // template literals allow you to create strings that hold JS expressions
-const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
+const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${
+    publicationDate.split('-')[0]
+}.`;
 summary;
 
 // Ternaries instead of if/else statements
@@ -198,7 +209,11 @@ summary;
 const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
 pagesRange;
 // because hasMovieAdaptation is a boolean, it is easy to use for a ternary
-console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
+console.log(
+    `${title} has ${pagesRange} pages. It has ${
+        hasMovieAdaptation ? '' : 'not'
+    } been adapted as a movie.`
+);
 
 // Arrow Functions
 
@@ -210,7 +225,7 @@ console.log(getYear(publicationDate));
 
 // when writing an arrow function on a single line, the return keyword is
 // not used.
-const getYearAgain = str => str.split('-')[0];
+const getYearAgain = (str) => str.split('-')[0];
 
 // Short-Circuiting and Logical Operators
 
@@ -219,12 +234,12 @@ const getYearAgain = str => str.split('-')[0];
 // and will not look at the second value.
 // Below, because the first value is "false", it short-circuits and does not look
 // at the string behind it.
-console.log(true && "Some string");
-console.log(false && "Some string");
+console.log(true && 'Some string');
+console.log(false && 'Some string');
 
 // The && operator short-circuits when the first value is false and immediately
 // returns the first value
-console.log(translations.polish && "This book has a Polish translation");
+console.log(translations.polish && 'This book has a Polish translation');
 
 // This also works with truthy and falsy values
 // Falsy values include false, 0, -0, NaN, '', null, and undefined
@@ -233,11 +248,11 @@ console.log(translations.polish && "This book has a Polish translation");
 
 // The || operator short-circuits when the first value is true and immediately
 // returns the first value
-console.log(hasMovieAdaptation || "This book does not have a movie");
+console.log(hasMovieAdaptation || 'This book does not have a movie');
 
 // The nullish coalescing operator is ?? and can return the right-side value
 // when the left side is falsy. If the reviewsCount were 0, it would return "no data"
-const count = book.reviews.librarything.reviewsCount ?? "no data";
+const count = book.reviews.librarything.reviewsCount ?? 'no data';
 count;
 
 // Optional Chaining
@@ -283,7 +298,6 @@ const longBooks = books
     .filter((book) => book.hasMovieAdaptation);
 longBooks;
 
-
 // Array Reduce Method
 
 // the reduce method is the most versatile and powerful of the JS array methods
@@ -294,7 +308,6 @@ longBooks;
 const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 pagesAllBooks;
 // the reduce method's starting value could be something like an object or array
-
 
 // Array Sort Method
 
@@ -310,3 +323,24 @@ arr;
 
 const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
 sortedByPages;
+
+// Immutable Arrays
+
+// 1. Add a book object to an array
+const newBook = {
+    id: 6,
+    title: 'Harry Potter and the Chamber of Secrets',
+    author: 'J.K. Rowling',
+};
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// 2. Delete a book object from an array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id != 3);
+booksAfterDelete;
+
+// 3. Update a book object in an array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+    book.id === 1 ? { ...book, pages: 1210 } : book
+);
+booksAfterUpdate;
