@@ -344,3 +344,17 @@ const booksAfterUpdate = booksAfterDelete.map((book) =>
     book.id === 1 ? { ...book, pages: 1210 } : book
 );
 booksAfterUpdate;
+
+// Async Promises
+
+// in order to fetch data from an api, we have the fetch() method
+// fetching data from an api takes time to make an http request, wait until
+// it is processed, and then download the data from the server
+// while that's happening, JS is still running. it will immediately move on.
+// fetch is an example of a Promise.
+fetch('https://jsonplaceholder.typicode.com/todos').then((res) =>
+    res.json().then((data) => console.log(data))
+);
+// .then() is used to dictate what will happen with the Promised value when it
+// has been returned. it takes two optional arguments, a callback for success
+// and another callback for failure. both of these arguments are optional.
