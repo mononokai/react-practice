@@ -358,3 +358,15 @@ fetch('https://jsonplaceholder.typicode.com/todos').then((res) =>
 // .then() is used to dictate what will happen with the Promised value when it
 // has been returned. it takes two optional arguments, a callback for success
 // and another callback for failure. both of these arguments are optional.
+
+
+// Async/Await
+
+// the async keyword makes a function return a promise. the await keyword can
+// only be used inside of an async function and it makes the function pause to
+// wait for the promise to resolve before continuing
+async function getTodos() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const data = await res.json();
+    console.log(data);
+}
