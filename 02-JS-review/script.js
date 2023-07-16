@@ -1,3 +1,6 @@
+// Using the Quokka extension in VS Code will make the code on this page 
+// easier to figure out
+
 const data = [
     {
         id: 1,
@@ -143,101 +146,101 @@ function getBook(id) {
     return data.find((d) => d.id === id);
 }
 
-// // Destructuring
+// Destructuring
 
-// const book = getBook(1);
+const book = getBook(1);
 
-// const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
-// title;
-// author;
-// pages;
-// publicationDate;
-// genres;
-// hasMovieAdaptation;
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation, translations } = book;
+title;
+author;
+pages;
+publicationDate;
+genres;
+hasMovieAdaptation;
 
-// const [primaryGenre, secondaryGenre] = genres;
-// primaryGenre;
-// secondaryGenre;
-// translations;
+const [primaryGenre, secondaryGenre] = genres;
+primaryGenre;
+secondaryGenre;
+translations;
 
-// // Rest/Spread Operator
+// Rest/Spread Operator
 
-// // the rest operator will create an array with the "rest" of the values in the
-// // array or object
-// const [firstGenre, secondGenre, ...otherGenres] = genres;
-// console.log(firstGenre, secondGenre, otherGenres);
+// the rest operator will create an array with the "rest" of the values in the
+// array or object
+const [firstGenre, secondGenre, ...otherGenres] = genres;
+console.log(firstGenre, secondGenre, otherGenres);
 
-// // the spread operator will take all of the values of the array and place them in
-// // a new array
-// const newGenres = [...genres, "epic fantasy"];
-// console.log(newGenres);
+// the spread operator will take all of the values of the array and place them in
+// a new array
+const newGenres = [...genres, "epic fantasy"];
+console.log(newGenres);
 
-// // the spread operator works similarly with an object, but can be used to
-// // create new properties, but also to override existing property values
-// const updateBook = {
-//     ...book,
-//     // adding a new property
-//     movePublicationDate: '2001-12-19',
-//     //  overwriting an existing property
-//     pages: 1210};
-// updateBook;
+// the spread operator works similarly with an object, but can be used to
+// create new properties, but also to override existing property values
+const updateBook = {
+    ...book,
+    // adding a new property
+    movePublicationDate: '2001-12-19',
+    //  overwriting an existing property
+    pages: 1210};
+updateBook;
 
-// // Template Literals
+// Template Literals
 
-// // template literals allow you to create strings that hold JS expressions
-// const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
-// summary;
+// template literals allow you to create strings that hold JS expressions
+const summary = `${title}, a ${pages} page long book, was written by ${author} and published in ${publicationDate.split("-")[0]}.`;
+summary;
 
-// // Ternaries instead of if/else statements
+// Ternaries instead of if/else statements
 
-// // ternaries are operators that use three parts to decide a condition
-// // syntax: condition ? true return value : false return value
-// const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
-// pagesRange;
-// // because hasMovieAdaptation is a boolean, it is easy to use for a ternary
-// console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
+// ternaries are operators that use three parts to decide a condition
+// syntax: condition ? true return value : false return value
+const pagesRange = pages > 1000 ? 'over a thousand' : 'less than 1000';
+pagesRange;
+// because hasMovieAdaptation is a boolean, it is easy to use for a ternary
+console.log(`${title} has ${pagesRange} pages. It has ${hasMovieAdaptation ? "" : "not"} been adapted as a movie.`);
 
-// // Arrow Functions
+// Arrow Functions
 
-// // arrow functions are useful for writing shorthand functions
-// function getYear(str) {
-//     return str.split('-')[0];
-// }
-// console.log(getYear(publicationDate));
+// arrow functions are useful for writing shorthand functions
+function getYear(str) {
+    return str.split('-')[0];
+}
+console.log(getYear(publicationDate));
 
-// // when writing an arrow function on a single line, the return keyword is
-// // not used.
-// const getYearAgain = str => str.split('-')[0];
+// when writing an arrow function on a single line, the return keyword is
+// not used.
+const getYearAgain = str => str.split('-')[0];
 
-// // Short-Circuiting and Logical Operators
+// Short-Circuiting and Logical Operators
 
-// // The && and // operators have the ability to short circuit. Short-circuiting
-// // is when, depending on the condition, the operator returns the first value
-// // and will not look at the second value.
-// // Below, because the first value is "false", it short-circuits and does not look
-// // at the string behind it.
-// console.log(true && "Some string");
-// console.log(false && "Some string");
+// The && and // operators have the ability to short circuit. Short-circuiting
+// is when, depending on the condition, the operator returns the first value
+// and will not look at the second value.
+// Below, because the first value is "false", it short-circuits and does not look
+// at the string behind it.
+console.log(true && "Some string");
+console.log(false && "Some string");
 
-// // The && operator short-circuits when the first value is false and immediately
-// // returns the first value
-// console.log(translations.polish && "This book has a Polish translation");
+// The && operator short-circuits when the first value is false and immediately
+// returns the first value
+console.log(translations.polish && "This book has a Polish translation");
 
-// // This also works with truthy and falsy values
-// // Falsy values include false, 0, -0, NaN, '', null, and undefined
-// // Because of this, be careful when using short-circuiting. It can backfire due
-// // to these falsy values if you are not aware of them.
+// This also works with truthy and falsy values
+// Falsy values include false, 0, -0, NaN, '', null, and undefined
+// Because of this, be careful when using short-circuiting. It can backfire due
+// to these falsy values if you are not aware of them.
 
-// // The || operator short-circuits when the first value is true and immediately
-// // returns the first value
-// console.log(hasMovieAdaptation || "This book does not have a movie");
+// The || operator short-circuits when the first value is true and immediately
+// returns the first value
+console.log(hasMovieAdaptation || "This book does not have a movie");
 
-// // The nullish coalescing operator is ?? and can return the right-side value
-// // when the left side is falsy. If the reviewsCount were 0, it would return "no data"
-// const count = book.reviews.librarything.reviewsCount ?? "no data";
-// count;
+// The nullish coalescing operator is ?? and can return the right-side value
+// when the left side is falsy. If the reviewsCount were 0, it would return "no data"
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
 
-// // Optional Chaining
+// Optional Chaining
 
 function getTotalReviewCount(book) {
     const goodreads = book.reviews.goodreads?.reviewsCount ?? 0;
@@ -248,9 +251,9 @@ function getTotalReviewCount(book) {
     const librarything = book.reviews?.librarything ?? 0;
     return goodreads + librarything;
 }
-// // It's not a bad idea to use optional chaining liberally, as it cannot hurt you
-// // but only helps
-// console.log(getTotalReviewCount(book));
+// It's not a bad idea to use optional chaining liberally, as it cannot hurt you
+// but only helps
+console.log(getTotalReviewCount(book));
 
 // Array Map Method
 
@@ -292,3 +295,18 @@ const pagesAllBooks = books.reduce((acc, book) => acc + book.pages, 0);
 pagesAllBooks;
 // the reduce method's starting value could be something like an object or array
 
+
+// Array Sort Method
+
+// The sort method takes in a function with two parameters in order to sort
+// the values of the array
+// using a - b will sort in an ascending manner, b - a will sort descending
+const arr = [3, 5, 0, 9, 1];
+// be careful, .sort() changes the original array. in order to avoid this,
+// use the .slice() method first.
+const sorted = arr.slice().sort((a, b) => a - b);
+sorted;
+arr;
+
+const sortedByPages = books.slice().sort((a, b) => a.pages - b.pages);
+sortedByPages;
