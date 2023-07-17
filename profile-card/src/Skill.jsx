@@ -1,7 +1,12 @@
-export const Skill = (props) => {
+export const Skill = ({ skill, level, color }) => {
     return (
-        <div className="skill">
-            <span>{props.skill}</span>
-        </div>
+        <li style={{ backgroundColor: color }} className="skill">
+            <span>{skill}</span>
+            <span>
+                {level === "beginner" && "👶"}
+                {level === "intermediate" && "👍"}
+                {level === "advanced" && "💪"}
+            </span>
+        </li>
     )
 }
