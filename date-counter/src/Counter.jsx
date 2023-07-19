@@ -32,6 +32,11 @@ export const Counter = () => {
         setCount(Number(e.target.value));
     }
 
+    const handleReset = () => {
+        setStep(1);
+        setCount(0);
+    }
+
     return (
         <>
             <div>
@@ -53,6 +58,7 @@ export const Counter = () => {
                 </span>
                 <span>{day.toDateString()}</span>
             </div>
+            {(count === 0 || step === 1) ? "" : <button onClick={handleReset}>Reset</button>}  
         </>
     );
 };
