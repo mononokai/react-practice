@@ -37,11 +37,10 @@ export const Counter = () => {
             <div>
                 <input type="range" min='1' max='10' value={step} onChange={e => handleRange(e)}/>
                 <span>Step: {step}</span>
-                <button onClick={handlePlusStep}>+</button>
             </div>
             <div>
                 <button onClick={handleMinusCount}>-</button>
-                <span>Count: {count}</span>
+                <input type="number" onChange={handleInput} value={count} />
                 <button onClick={handlePlusCount}>+</button>
             </div>
             <div>
