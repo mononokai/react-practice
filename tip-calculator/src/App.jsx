@@ -22,8 +22,13 @@ export default function App() {
             <SelectPercentage currentPercent={percentageA} onPercentChange={setPercentageA}>How did you like the service?</SelectPercentage>
             <SelectPercentage currentPercent={percentageB} onPercentChange={setPercentageB}>How did your friend like the service?</SelectPercentage>
 
-            <BillTotal currentBillCost={billCost} tipAmount={tipAmount} />
-            <Reset onReset={handleReset} />
+            {billCost > 0 &&
+                <>
+                    <BillTotal currentBillCost={billCost} tipAmount={tipAmount} />
+                    <Reset onReset={handleReset} /> 
+                </>
+            }
+
         </div>
     );
 }
