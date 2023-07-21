@@ -44,9 +44,7 @@ const Steps = () => {
                         <div className={step >= 3 ? 'active' : ''}>3</div>
                     </div>
 
-                    <p className="message">
-                        Step {step}: {messages[step - 1]}
-                    </p>
+                    <StepMessage step={step}>{messages[step -1]}</StepMessage>
 
                     <div className="buttons">
                         <Button
@@ -67,6 +65,15 @@ const Steps = () => {
         </>
     );
 };
+
+const StepMessage = ({ step, children }) => {
+    return (
+        <p className='message'>
+            <h3>Step {step}</h3>
+            {children}
+        </p>
+    )
+}
 
 const Button = ({ textColor, bgColor, onClick, children }) => {
     return (
